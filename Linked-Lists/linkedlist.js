@@ -4,12 +4,31 @@ const node = (value = null, nextNode = null) => {
 
 const linkedList = () => {
     let head = null;
+    let tail = null;
     let size = 0;
 
     return {
-        // Function returns the current head of the list
+        // Function returns the first item in the list
         head() {
             return head;
+        },
+
+        // Function returns the current last item in the list
+        tail() {
+            return tail;
+        },
+
+        // Function adds new data to the end of the list
+        append(data) {
+            const newNode = node(data);
+
+            if (!head) {
+                head = newNode;
+                tail = newNode;
+                return;
+            }
+            tail.nextNode = newNode;
+            tail = newNode;
         },
 
         // Function adds new data to the beginning of the list
@@ -20,18 +39,21 @@ const linkedList = () => {
 };
 
 const list = linkedList();
-const test = list.append('New Data');
-const test2 = list.append('New Data 2');
+const test1 = list.append('First');
+const test2 = list.append('Second');
+const test3 = list.append('Third');
+const test4 = list.prepend('Start');
 
 console.log(list.head());
+console.log(list.tail());
 
 // Methods to be added the the linked list
 
-// Append
+// Append - Added
 // Prepend - Added
 // Size
 // Head - Added
-// Tail
+// Tail - Added
 // At index
 // Pop
 // Contains
