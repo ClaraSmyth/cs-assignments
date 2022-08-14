@@ -18,9 +18,15 @@ const linkedList = () => {
             return tail;
         },
 
+        // Function returns the size of the list
+        size() {
+            return size;
+        },
+
         // Function adds new data to the end of the list
         append(data) {
             const newNode = node(data);
+            size++;
 
             if (!head) {
                 head = newNode;
@@ -34,6 +40,7 @@ const linkedList = () => {
         // Function adds new data to the beginning of the list
         prepend(data) {
             head = node(data, head);
+            size++;
         },
     };
 };
@@ -46,12 +53,13 @@ const test4 = list.prepend('Start');
 
 console.log(list.head());
 console.log(list.tail());
+console.log(list.size());
 
 // Methods to be added the the linked list
 
 // Append - Added
 // Prepend - Added
-// Size
+// Size - Added
 // Head - Added
 // Tail - Added
 // At index
