@@ -12,8 +12,8 @@ const linkedList = () => {
             return head;
         },
 
-        // Function adds new data to the list
-        append(data) {
+        // Function adds new data to the beginning of the list
+        prepend(data) {
             head = node(data, head);
         },
     };
@@ -27,8 +27,8 @@ console.log(list.head());
 
 // Methods to be added the the linked list
 
-// Append - Added
-// Prepend
+// Append
+// Prepend - Added
 // Size
 // Head - Added
 // Tail
