@@ -58,13 +58,13 @@ const linkedList = () => {
             return currentNode;
         },
 
-        // Function adds new data to the beginning of the list
+        // Function removes the last item from the list
         pop() {
             if (size < 2) {
                 head = null;
                 tail = null;
                 size--;
-                return;
+                return 'Removed last item in list';
             }
             let currentNode = head;
 
@@ -75,7 +75,19 @@ const linkedList = () => {
             currentNode.nextNode = null;
             tail = currentNode;
             size--;
-            return;
+            return 'Removed last item in list';
+        },
+
+        // Function returns true or false depending on if the input data is in the list or not
+        contains(data) {
+            let currentNode = head;
+            let result = false;
+            while (currentNode !== null) {
+                if (currentNode.value === data) result = true;
+                currentNode = currentNode.nextNode;
+            }
+
+            return result;
         },
     };
 };
@@ -90,7 +102,8 @@ const prepend1 = list.prepend('Start');
 // console.log(list.tail());
 // console.log(list.size());
 // console.log(list.at(0));
-console.log(list.pop());
+// console.log(list.pop());
+// console.log(list.contains('Third'));
 
 // Methods to be added the the linked list
 
@@ -100,8 +113,8 @@ console.log(list.pop());
 // Head - Added
 // Tail - Added
 // At index - Added
-// Pop
-// Contains
+// Pop - Added
+// Contains - Added
 // Find
 // To String
 // Insert At
