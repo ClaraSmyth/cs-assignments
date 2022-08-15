@@ -104,7 +104,7 @@ const linkedList = () => {
             return result;
         },
 
-        // Function returns the index of the node containing the input data, or null if not found
+        // Function returns the list in string format
         toString() {
             let currentNode = head;
             let result = '';
@@ -132,7 +132,7 @@ const prepend1 = list.prepend('Start');
 // console.log(list.pop());
 // console.log(list.contains('Third'));
 // console.log(list.find('First'));
-console.log(list.toString());
+// console.log(list.toString());
 
 // Methods to be added the the linked list
 
