@@ -42,18 +42,34 @@ const linkedList = () => {
             head = node(data, head);
             size++;
         },
+
+        // Function adds new data at a given index of the list
+        at(index) {
+            if (index < 0 || index > size - 1) return 'Invalid index';
+
+            let currentNode = head;
+            let nextNode = currentNode.nextNode;
+
+            for (let i = 0; i < index; i++) {
+                currentNode = nextNode;
+                nextNode = currentNode.nextNode;
+            }
+
+            return currentNode;
+        },
     };
 };
 
 const list = linkedList();
-const test1 = list.append('First');
-const test2 = list.append('Second');
-const test3 = list.append('Third');
-const test4 = list.prepend('Start');
+const append1 = list.append('First');
+const append2 = list.append('Second');
+const append3 = list.append('Third');
+const prepend1 = list.prepend('Start');
 
-console.log(list.head());
-console.log(list.tail());
-console.log(list.size());
+// console.log(list.head());
+// console.log(list.tail());
+// console.log(list.size());
+console.log(list.at(0));
 
 // Methods to be added the the linked list
 
@@ -62,7 +78,7 @@ console.log(list.size());
 // Size - Added
 // Head - Added
 // Tail - Added
-// At index
+// At index - Added
 // Pop
 // Contains
 // Find
