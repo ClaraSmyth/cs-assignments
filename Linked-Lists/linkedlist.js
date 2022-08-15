@@ -57,6 +57,26 @@ const linkedList = () => {
 
             return currentNode;
         },
+
+        // Function adds new data to the beginning of the list
+        pop() {
+            if (size < 2) {
+                head = null;
+                tail = null;
+                size--;
+                return;
+            }
+            let currentNode = head;
+
+            while (currentNode.nextNode !== tail) {
+                currentNode = currentNode.nextNode;
+            }
+
+            currentNode.nextNode = null;
+            tail = currentNode;
+            size--;
+            return;
+        },
     };
 };
 
@@ -69,7 +89,8 @@ const prepend1 = list.prepend('Start');
 // console.log(list.head());
 // console.log(list.tail());
 // console.log(list.size());
-console.log(list.at(0));
+// console.log(list.at(0));
+console.log(list.pop());
 
 // Methods to be added the the linked list
 
