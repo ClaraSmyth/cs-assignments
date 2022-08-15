@@ -89,6 +89,20 @@ const linkedList = () => {
 
             return result;
         },
+
+        // Function returns the index of the node containing the input data, or null if not found
+        find(data) {
+            let currentNode = head;
+            let currentIndex = 0;
+            let result = null;
+            while (currentNode !== null) {
+                if (currentNode.value === data) result = currentIndex;
+                currentNode = currentNode.nextNode;
+                currentIndex++;
+            }
+
+            return result;
+        },
     };
 };
 
@@ -104,6 +118,7 @@ const prepend1 = list.prepend('Start');
 // console.log(list.at(0));
 // console.log(list.pop());
 // console.log(list.contains('Third'));
+// console.log(list.find('First'));
 
 // Methods to be added the the linked list
 
@@ -115,7 +130,7 @@ const prepend1 = list.prepend('Start');
 // At index - Added
 // Pop - Added
 // Contains - Added
-// Find
+// Find - Added
 // To String
 // Insert At
 // Remove At
