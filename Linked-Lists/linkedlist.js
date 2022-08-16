@@ -8,12 +8,12 @@ const linkedList = () => {
     let size = 0;
 
     return {
-        // Function returns the first item in the list
+        // Function returns the first node in the list
         head() {
             return head;
         },
 
-        // Function returns the current last item in the list
+        // Function returns the current last node in the list
         tail() {
             return tail;
         },
@@ -43,28 +43,26 @@ const linkedList = () => {
             size++;
         },
 
-        // Function adds new data at a given index of the list
+        // Function returns node at given index
         at(index) {
             if (index < 0 || index > size - 1) return 'Invalid index';
 
             let currentNode = head;
-            let nextNode = currentNode.nextNode;
 
             for (let i = 0; i < index; i++) {
-                currentNode = nextNode;
-                nextNode = currentNode.nextNode;
+                currentNode = currentNode.nextNode;
             }
 
             return currentNode;
         },
 
-        // Function removes the last item from the list
+        // Function removes the last node from the list
         pop() {
             if (size < 2) {
                 head = null;
                 tail = null;
                 size--;
-                return 'Removed last item in list';
+                return 'Removed last node in list';
             }
             let currentNode = head;
 
@@ -75,7 +73,7 @@ const linkedList = () => {
             currentNode.nextNode = null;
             tail = currentNode;
             size--;
-            return 'Removed last item in list';
+            return 'Removed last node in list';
         },
 
         // Function returns true or false depending on if the input data is in the list or not
