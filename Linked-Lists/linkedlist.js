@@ -131,6 +131,22 @@ const linkedList = () => {
             size++;
             return `New node added at index (${index})`;
         },
+
+        // Function removes data at a given index of the list
+        removeAt(index) {
+            if (index < 0 || index > size - 1) return 'Invalid index';
+            if (index === 0) return (head = head.nextNode);
+
+            let currentNode = head;
+
+            for (let i = 0; i < index - 1; i++) {
+                currentNode = currentNode.nextNode;
+            }
+
+            currentNode.nextNode = currentNode.nextNode.nextNode;
+            size--;
+            return `Node removed at index (${index})`;
+        },
     };
 };
 
@@ -149,6 +165,7 @@ const prepend1 = list.prepend('Start');
 // console.log(list.find('First'));
 // console.log(list.toString());
 // console.log(list.insertAt('Inserted', 4));
+// console.log(list.removeAt(3));
 
 // Methods to be added the the linked list
 
@@ -163,4 +180,4 @@ const prepend1 = list.prepend('Start');
 // Find - Added
 // To String - Added
 // Insert At - Added
-// Remove At
+// Remove At - Added
