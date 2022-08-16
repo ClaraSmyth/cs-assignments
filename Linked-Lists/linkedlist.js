@@ -114,6 +114,25 @@ const linkedList = () => {
 
             return result;
         },
+
+        // Function adds new data at a given index of the list
+        insertAt(data, index) {
+            if (index < 0 || index > size - 1) return 'Invalid index';
+            if (index === 0) return this.prepend(data);
+            if (index === size - 1) return this.append(data);
+
+            const newNode = node(data);
+            let currentNode = head;
+
+            for (let i = 0; i < index - 1; i++) {
+                currentNode = currentNode.nextNode;
+            }
+
+            newNode.nextNode = currentNode.nextNode;
+            currentNode.nextNode = newNode;
+            size++;
+            return `New node added at index (${index})`;
+        },
     };
 };
 
@@ -131,6 +150,7 @@ const prepend1 = list.prepend('Start');
 // console.log(list.contains('Third'));
 // console.log(list.find('First'));
 // console.log(list.toString());
+// console.log(list.insertAt('Inserted', 2));
 
 // Methods to be added the the linked list
 
@@ -144,5 +164,5 @@ const prepend1 = list.prepend('Start');
 // Contains - Added
 // Find - Added
 // To String - Added
-// Insert At
+// Insert At - Added
 // Remove At
