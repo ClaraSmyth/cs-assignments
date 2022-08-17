@@ -11,7 +11,9 @@ const tree = () => {
 
     return {
         buildTree(arr) {
-            let removeDuplicates = [...new Set(arr)];
+            const removeDuplicates = [...new Set(arr)];
+            const sortedArr = removeDuplicates.sort((a, b) => a - b);
+            console.log(sortedArr);
         },
     };
 };
