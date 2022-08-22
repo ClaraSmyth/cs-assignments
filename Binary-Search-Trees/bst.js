@@ -32,26 +32,26 @@ const tree = () => {
             // console.log('ARR', sortedArr);
             // console.log('First', firstHalf);
             // console.log('Second', secondHalf);
-            console.log(root.left.left);
         },
 
         insert(data) {
             let currentNode = root;
+            let previousNode = null;
             while (currentNode !== null) {
-                if (currentNode > data) {
+                previousNode = currentNode;
+                if (currentNode.data > data) {
                     currentNode = currentNode.left;
-                } else if (currentNode < data) {
+                } else if (currentNode.data < data) {
                     currentNode = currentNode.right;
                 }
             }
+            currentNode = node(data);
 
-            if (currentNode > data) {
-                currentNode.left = node(data);
-            } else if (currentNode < data) {
-                currentNode.right = node(data);
+            if (currentNode.data < previousNode.data) {
+                previousNode.left = currentNode;
+            } else {
+                previousNode.right = currentNode;
             }
-
-            return currentNode;
         },
     };
 };
@@ -60,4 +60,4 @@ const test = tree();
 const testArray = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 
 test.buildTree(testArray);
-console.log(test.insert(6));
+test.insert(6);
