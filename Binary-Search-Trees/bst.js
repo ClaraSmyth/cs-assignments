@@ -10,6 +10,10 @@ const tree = () => {
     let root = null;
 
     return {
+        root() {
+            return root;
+        },
+
         buildTree(arr) {
             const removeDuplicates = [...new Set(arr)];
             const sortedArr = removeDuplicates.sort((a, b) => a - b);
@@ -59,5 +63,16 @@ const tree = () => {
 const test = tree();
 const testArray = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 
+const prettyPrint = (node, prefix = '', isLeft = true) => {
+    if (node.right !== null) {
+        prettyPrint(node.right, `${prefix}${isLeft ? '│   ' : '    '}`, false);
+    }
+    console.log(`${prefix}${isLeft ? '└── ' : '┌── '}${node.data}`);
+    if (node.left !== null) {
+        prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
+    }
+};
+
 test.buildTree(testArray);
 test.insert(6);
+prettyPrint(test.root());
