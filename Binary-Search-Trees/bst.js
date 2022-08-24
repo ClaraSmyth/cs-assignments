@@ -57,6 +57,20 @@ const tree = () => {
                 previousNode.right = currentNode;
             }
         },
+
+        find(data) {
+            let currentNode = root;
+
+            while (currentNode.data !== data) {
+                if (currentNode.data > data) {
+                    currentNode = currentNode.left;
+                } else if (currentNode.data < data) {
+                    currentNode = currentNode.right;
+                }
+            }
+
+            return currentNode;
+        },
     };
 };
 
@@ -75,4 +89,5 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 
 test.buildTree(testArray);
 test.insert(6);
-prettyPrint(test.root());
+// prettyPrint(test.root());
+console.log(test.find(5));
