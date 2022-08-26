@@ -32,23 +32,24 @@ const tree = () => {
             }
 
             root = buildSubtrees(sortedArr);
-
-            // console.log('ARR', sortedArr);
-            // console.log('First', firstHalf);
-            // console.log('Second', secondHalf);
         },
 
         insert(data) {
             let currentNode = root;
             let previousNode = null;
+
             while (currentNode !== null) {
+                if (currentNode.data === data) return `Already exists: ${data}`;
+
                 previousNode = currentNode;
+
                 if (currentNode.data > data) {
                     currentNode = currentNode.left;
                 } else if (currentNode.data < data) {
                     currentNode = currentNode.right;
                 }
             }
+
             currentNode = node(data);
 
             if (currentNode.data < previousNode.data) {
