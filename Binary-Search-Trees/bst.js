@@ -39,7 +39,7 @@ const tree = () => {
             let previousNode = null;
 
             while (currentNode !== null) {
-                if (currentNode.data === data) return `Already exists: ${data}`;
+                if (currentNode.data === data) return console.log(`Already exists: ${data}`);
 
                 previousNode = currentNode;
 
@@ -62,13 +62,14 @@ const tree = () => {
         delete(data) {
             let currentNode = root;
             let previousNode = null;
-            let newChild = null;
 
             while (currentNode.data !== data) {
                 previousNode = currentNode;
                 if (currentNode.data > data) {
+                    if (currentNode.left === null) return console.log(`Doesn't exist: ${data}`);
                     currentNode = currentNode.left;
                 } else if (currentNode.data < data) {
+                    if (currentNode.right === null) return console.log(`Doesn't exist: ${data}`);
                     currentNode = currentNode.right;
                 }
             }
@@ -134,5 +135,6 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 test.buildTree(testArray);
 test.insert(6);
 test.delete(4);
+test.delete(200);
 prettyPrint(test.root());
 // console.log(test.find(5));
