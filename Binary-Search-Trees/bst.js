@@ -61,6 +61,7 @@ const tree = () => {
         delete(data) {
             let currentNode = root;
             let previousNode = null;
+            let newChild = null;
 
             while (currentNode.data !== data) {
                 previousNode = currentNode;
@@ -71,31 +72,19 @@ const tree = () => {
                 }
             }
 
-            // If the deleted node has no children
-            if (currentNode.left === null && currentNode.right === null) {
-                if (currentNode.data < previousNode.data) {
-                    previousNode.left = null;
-                } else {
-                    previousNode.right = null;
-                }
-            }
+            // If the deleted node has 0 or 1 child
+            if (currentNode.data < previousNode.data) {
+                if (currentNode.left === null && currentNode.right === null) previousNode.left = null;
 
-            // If the deleted node has 1 child on the right
-            if (currentNode.left === null && currentNode.right !== null) {
-                if (currentNode.data < previousNode.data) {
-                    previousNode.left = currentNode.right;
-                } else {
-                    previousNode.right = currentNode.right;
-                }
-            }
+                if (currentNode.left === null && currentNode.right !== null) previousNode.left = currentNode.right;
 
-            // If the deleted node has 1 child on the left
-            if (currentNode.left !== null && currentNode.right === null) {
-                if (currentNode.data < previousNode.data) {
-                    previousNode.left = currentNode.left;
-                } else {
-                    previousNode.right = currentNode.left;
-                }
+                if (currentNode.left !== null && currentNode.right === null) previousNode.left = currentNode.left;
+            } else {
+                if (currentNode.left === null && currentNode.right === null) previousNode.right = null;
+
+                if (currentNode.left === null && currentNode.right !== null) previousNode.right = currentNode.right;
+
+                if (currentNode.left !== null && currentNode.right === null) previousNode.right = currentNode.left;
             }
 
             // If the deleted node had 2 children
