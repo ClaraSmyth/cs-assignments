@@ -71,10 +71,31 @@ const tree = () => {
                 }
             }
 
-            if (currentNode.data < previousNode.data) {
-                previousNode.left = null;
-            } else {
-                previousNode.right = null;
+            // If the deleted node has no children
+            if (currentNode.left === null && currentNode.right === null) {
+                if (currentNode.data < previousNode.data) {
+                    previousNode.left = null;
+                } else {
+                    previousNode.right = null;
+                }
+            }
+
+            // If the deleted node has 1 child on the left
+            if (currentNode.left === null && currentNode.right !== null) {
+                if (currentNode.data < previousNode.data) {
+                    previousNode.left = currentNode.right;
+                } else {
+                    previousNode.right = currentNode.right;
+                }
+            }
+
+            // If the deleted node has 1 child on the right
+            if (currentNode.left !== null && currentNode.right === null) {
+                if (currentNode.data < previousNode.data) {
+                    previousNode.left = currentNode.left;
+                } else {
+                    previousNode.right = currentNode.left;
+                }
             }
         },
 
@@ -109,6 +130,6 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 
 test.buildTree(testArray);
 test.insert(6);
-// test.delete(6);
+test.delete(5);
 prettyPrint(test.root());
 // console.log(test.find(5));
