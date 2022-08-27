@@ -132,6 +132,16 @@ const tree = () => {
 
             return result;
         },
+
+        preOrder(currentNode = root, result = []) {
+            if (currentNode === null) return;
+
+            result.push(currentNode.data);
+            this.preOrder(currentNode.left, result);
+            this.preOrder(currentNode.right, result);
+
+            return result;
+        },
     };
 };
 
@@ -152,5 +162,6 @@ test.buildTree(testArray);
 test.insert(6);
 test.delete(4);
 prettyPrint(test.root());
-console.log(test.levelOrder());
+// console.log(test.levelOrder());
+console.log(test.preOrder());
 // console.log(test.find(5));
