@@ -116,6 +116,22 @@ const tree = () => {
 
             return currentNode;
         },
+
+        levelOrder() {
+            let queue = [root];
+            let result = [];
+
+            while (queue.length > 0) {
+                let currentNode = queue.shift();
+
+                if (currentNode.left !== null) queue.push(currentNode.left);
+                if (currentNode.right !== null) queue.push(currentNode.right);
+
+                result.push(currentNode);
+            }
+
+            return result;
+        },
     };
 };
 
@@ -135,6 +151,6 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 test.buildTree(testArray);
 test.insert(6);
 test.delete(4);
-test.delete(200);
 prettyPrint(test.root());
+console.log(test.levelOrder());
 // console.log(test.find(5));
