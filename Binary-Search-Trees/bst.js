@@ -152,6 +152,16 @@ const tree = () => {
 
             return result;
         },
+
+        postOrder(currentNode = root, result = []) {
+            if (currentNode === null) return;
+
+            this.postOrder(currentNode.left, result);
+            this.postOrder(currentNode.right, result);
+            result.push(currentNode.data);
+
+            return result;
+        },
     };
 };
 
@@ -175,4 +185,5 @@ prettyPrint(test.root());
 // console.log(test.levelOrder());
 console.log(test.preOrder());
 console.log(test.inOrder());
+console.log(test.postOrder());
 // console.log(test.find(5));
