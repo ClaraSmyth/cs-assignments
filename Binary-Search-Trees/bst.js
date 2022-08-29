@@ -127,7 +127,7 @@ const tree = () => {
                 if (currentNode.left !== null) queue.push(currentNode.left);
                 if (currentNode.right !== null) queue.push(currentNode.right);
 
-                result.push(currentNode);
+                result.push(currentNode.data);
             }
 
             return result;
@@ -200,9 +200,6 @@ const tree = () => {
     };
 };
 
-const test = tree();
-const testArray = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
-
 const prettyPrint = (node, prefix = '', isLeft = true) => {
     if (node.right !== null) {
         prettyPrint(node.right, `${prefix}${isLeft ? '│   ' : '    '}`, false);
@@ -213,18 +210,46 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
     }
 };
 
-test.buildTree(testArray);
-test.insert(6);
-// test.delete(4);
-prettyPrint(test.root());
-console.log(test.height());
-// console.log(test.depth(test.find(6)));
-console.log(test.isBalanced());
-test.reBalance();
-console.log(test.isBalanced());
-prettyPrint(test.root());
-// console.log(test.levelOrder());
-// console.log(test.preOrder());
-// console.log(test.inOrder());
-// console.log(test.postOrder());
-// console.log(test.find(5));
+function randomNum(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
+////////////////////////////////////
+//         Driver Script
+////////////////////////////////////
+
+// Array of numbers
+const randomArr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+
+// Build the tree
+const bst = tree();
+bst.buildTree(randomArr);
+console.log('Creating new BST from array!');
+
+// Check if tree is balanced
+console.log('Is the tree balanced?', bst.isBalanced() ? 'Yes!' : 'No!');
+
+// Print out all elements in level, pre, post, and in order
+console.log('Level Order:', bst.levelOrder());
+console.log('In Order:', bst.inOrder());
+console.log('Pre Order:', bst.preOrder());
+console.log('Post Order:', bst.postOrder());
+
+// Unbalancing tree with random numbers
+console.log('Unbalancing tree with random numbers!');
+for (i = 0; i < 100; i++) {
+    bst.insert(randomNum(1, 100));
+}
+
+// Check if tree is balanced
+console.log('Is the tree balanced?', bst.isBalanced() ? 'Yes!' : 'No!');
+
+// Rebalance the tree
+console.log('Rebalancing the tree!');
+bst.reBalance();
+
+// Print out all elements in level, pre, post, and in order
+console.log('Level Order:', bst.levelOrder());
+console.log('In Order:', bst.inOrder());
+console.log('Pre Order:', bst.preOrder());
+console.log('Post Order:', bst.postOrder());
