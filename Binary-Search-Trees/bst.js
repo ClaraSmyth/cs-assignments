@@ -162,6 +162,11 @@ const tree = () => {
 
             return result;
         },
+
+        height(node = root) {
+            if (node === null) return -1;
+            return Math.max(this.height(node.left), this.height(node.right)) + 1;
+        },
     };
 };
 
@@ -180,10 +185,11 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 
 test.buildTree(testArray);
 test.insert(6);
-test.delete(4);
+// test.delete(4);
 prettyPrint(test.root());
+console.log(test.height());
 // console.log(test.levelOrder());
-console.log(test.preOrder());
-console.log(test.inOrder());
-console.log(test.postOrder());
+// console.log(test.preOrder());
+// console.log(test.inOrder());
+// console.log(test.postOrder());
 // console.log(test.find(5));
