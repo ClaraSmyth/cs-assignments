@@ -183,6 +183,16 @@ const tree = () => {
 
             return depth;
         },
+
+        isBalanced(node = root) {
+            if (node === null) return true;
+
+            return (
+                this.height(node.left) - this.height(node.right) <= 1 &&
+                this.isBalanced(node.left) &&
+                this.isBalanced(node.right)
+            );
+        },
     };
 };
 
@@ -204,7 +214,8 @@ test.insert(6);
 // test.delete(4);
 prettyPrint(test.root());
 console.log(test.height());
-console.log(test.depth(test.find(6)));
+// console.log(test.depth(test.find(6)));
+console.log(test.isBalanced());
 // console.log(test.levelOrder());
 // console.log(test.preOrder());
 // console.log(test.inOrder());
