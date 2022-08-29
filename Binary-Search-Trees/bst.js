@@ -167,6 +167,22 @@ const tree = () => {
             if (node === null) return -1;
             return Math.max(this.height(node.left), this.height(node.right)) + 1;
         },
+
+        depth(node) {
+            let currentNode = root;
+            let depth = null;
+
+            while (currentNode.data !== node.data) {
+                if (currentNode.data > node.data) {
+                    currentNode = currentNode.left;
+                } else if (currentNode.data < node.data) {
+                    currentNode = currentNode.right;
+                }
+                depth++;
+            }
+
+            return depth;
+        },
     };
 };
 
@@ -188,6 +204,7 @@ test.insert(6);
 // test.delete(4);
 prettyPrint(test.root());
 console.log(test.height());
+console.log(test.depth(test.find(6)));
 // console.log(test.levelOrder());
 // console.log(test.preOrder());
 // console.log(test.inOrder());
