@@ -193,6 +193,10 @@ const tree = () => {
                 this.isBalanced(node.right)
             );
         },
+
+        reBalance(root) {
+            root = this.buildTree(this.inOrder());
+        },
     };
 };
 
@@ -216,6 +220,9 @@ prettyPrint(test.root());
 console.log(test.height());
 // console.log(test.depth(test.find(6)));
 console.log(test.isBalanced());
+test.reBalance();
+console.log(test.isBalanced());
+prettyPrint(test.root());
 // console.log(test.levelOrder());
 // console.log(test.preOrder());
 // console.log(test.inOrder());
