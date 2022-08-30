@@ -58,7 +58,7 @@ To see the full assignment details - [Click Here](https://www.theodinproject.com
 
 ## Knights Travails
 
-The goal of this assignment was to create a function that shows the shortest possible way to get from one square to another on a chessboard by outputting all squares a knight will stop on along the way.
+The goal of this assignment was to create a function that shows the shortest possible way to get from one square to another on a chess board by outputting all squares a knight will stop on along the way.
 
 How to use:
 
