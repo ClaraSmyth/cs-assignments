@@ -259,5 +259,3 @@ console.log('Level Order:', bst.levelOrder());
 console.log('In Order:', bst.inOrder());
 console.log('Pre Order:', bst.preOrder());
 console.log('Post Order:', bst.postOrder());
-
-console.log(bst.depth(bst.find(325)));
