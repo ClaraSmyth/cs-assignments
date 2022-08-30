@@ -55,3 +55,25 @@ Available methods:
 -   .reBalance() - Rebalances the existing tree
 
 To see the full assignment details - [Click Here](https://www.theodinproject.com/lessons/javascript-binary-search-trees)
+
+## Knights Travails
+
+The goal of this assignment was to create a function that shows the shortest possible way to get from one square to another on a chessboard by outputting all squares a knight will stop on along the way.
+
+How to use:
+
+-   knightMoves(start, end);
+
+#### Example:
+
+knightMoves([4, 4], [5, 4]);
+
+// Returns:
+// You made it in 3 moves!
+// Here's your path:
+// [4, 4]
+// [5, 6]
+// [7, 5]
+// [5, 4]
+
+To see the full assignment details - [Click Here](https://www.theodinproject.com/lessons/javascript-knights-travails)
