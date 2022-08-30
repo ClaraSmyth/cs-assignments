@@ -106,13 +106,15 @@ const tree = () => {
         find(data) {
             let currentNode = root;
 
-            while (currentNode.data !== data) {
+            while (currentNode !== null && currentNode.data !== data) {
                 if (currentNode.data > data) {
                     currentNode = currentNode.left;
                 } else if (currentNode.data < data) {
                     currentNode = currentNode.right;
                 }
             }
+
+            if (currentNode === null) return `Couldnt find: ${data}`;
 
             return currentNode;
         },
@@ -172,7 +174,9 @@ const tree = () => {
             let currentNode = root;
             let depth = null;
 
-            while (currentNode.data !== node.data) {
+            if (isNaN(node.data)) return 'Not a node!';
+
+            while (currentNode !== null && currentNode.data !== node.data) {
                 if (currentNode.data > node.data) {
                     currentNode = currentNode.left;
                 } else if (currentNode.data < node.data) {
@@ -180,6 +184,8 @@ const tree = () => {
                 }
                 depth++;
             }
+
+            if (currentNode === null) return `Couldnt find: ${node.data}`;
 
             return depth;
         },
@@ -253,3 +259,5 @@ console.log('Level Order:', bst.levelOrder());
 console.log('In Order:', bst.inOrder());
 console.log('Pre Order:', bst.preOrder());
 console.log('Post Order:', bst.postOrder());
+
+console.log(bst.depth(bst.find(325)));
