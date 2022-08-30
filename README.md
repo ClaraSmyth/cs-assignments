@@ -66,7 +66,8 @@ How to use:
 
 #### Example:
 
-knightMoves([4, 4], [5, 4]);<br/>
+knightMoves([4, 4], [5, 4]);
+
 // Returns:<br/>
 // You made it in 3 moves!<br/>
 // Here's your path:<br/>
