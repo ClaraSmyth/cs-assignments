@@ -66,14 +66,13 @@ How to use:
 
 #### Example:
 
-knightMoves([4, 4], [5, 4]);
-
-// Returns:
-// You made it in 3 moves!
-// Here's your path:
-// [4, 4]
-// [5, 6]
-// [7, 5]
-// [5, 4]
+knightMoves([4, 4], [5, 4]);<br/>
+// Returns:<br/>
+// You made it in 3 moves!<br/>
+// Here's your path:<br/>
+// [4, 4]<br/>
+// [5, 6]<br/>
+// [7, 5]<br/>
+// [5, 4]<br/>
 
 To see the full assignment details - [Click Here](https://www.theodinproject.com/lessons/javascript-knights-travails)
