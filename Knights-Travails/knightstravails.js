@@ -21,6 +21,8 @@ const gameBoard = (start, end, queue = [], parentNode = null) => {
     let startNode = node(...start, parentNode);
     let endNode = node(...end, parentNode);
 
+    let tempQueue = [];
+
     possibleMoves.forEach((move) => {
         if (
             startNode.x + move[0] >= 0 &&
@@ -30,11 +32,12 @@ const gameBoard = (start, end, queue = [], parentNode = null) => {
         ) {
             const x = startNode.x + move[0];
             const y = startNode.y + move[1];
+            tempQueue.push(node(x, y, startNode));
             queue.push(node(x, y, startNode));
         }
     });
 
-    let result = queue.filter((node) => {
+    let result = tempQueue.filter((node) => {
         return node.x === endNode.x && node.y === endNode.y;
     });
 
