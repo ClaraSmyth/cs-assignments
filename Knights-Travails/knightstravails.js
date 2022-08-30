@@ -18,17 +18,28 @@ const possibleMoves = [
 ];
 
 const gameBoard = (start, end) => {
-    const board = [];
+    const queue = [];
 
-    for (i = 0; i < 8; i++) {
-        for (j = 0; j < 8; j++) {
-            board.push([i, j]);
+    let startNode = node(...start);
+    let endNode = node(...end);
+
+    possibleMoves.forEach((move) => {
+        if (
+            startNode.x + move[0] >= 0 &&
+            startNode.x + move[0] < 8 &&
+            startNode.y + move[1] >= 0 &&
+            startNode.y + move[1] < 8
+        ) {
+            let x = startNode.x + move[0];
+            let y = startNode.y + move[1];
+            queue.push(node(x, y, startNode));
         }
-    }
+    });
 
-    console.log(board);
+    console.log(startNode);
+    console.log(queue);
 };
 
 const knightMoves = (start, end) => {};
 
-gameBoard();
+gameBoard([3, 3], [4, 3]);
