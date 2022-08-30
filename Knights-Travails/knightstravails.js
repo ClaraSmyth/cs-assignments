@@ -35,19 +35,40 @@ const gameBoard = (start, end, queue = [], parentNode = null) => {
     });
 
     let result = queue.filter((node) => {
-        return endNode.x === node.x && endNode.y === node.y;
+        return node.x === endNode.x && node.y === endNode.y;
     });
 
     if (result[0] === undefined) {
         const nextNode = queue.shift();
-        result = gameBoard([nextNode.x, nextNode.y], end, queue, startNode);
+        result = gameBoard([nextNode.x, nextNode.y], end, queue, nextNode.parentNode);
     }
 
     return result;
 };
 
-const knightMoves = (start, end) => {};
+const knightMoves = (start, end) => {
+    const move = gameBoard(start, end);
 
-gameBoard([3, 3], [4, 3]);
+    let currentNode = move[0];
+    let count = 0;
+    let path = '';
 
-console.log(gameBoard([3, 3], [4, 3]));
+    while (currentNode !== null) {
+        path = `[${currentNode.x}, ${currentNode.y}]\n${path}`;
+        currentNode = currentNode.parentNode;
+        count++;
+    }
+
+    console.log(`You made it in ${count - 1} moves!`);
+    console.log("Here's your path:");
+    console.log(path);
+};
+
+knightMoves([4, 4], [5, 4]);
+// Returns:
+// You made it in 3 moves!
+// Here's your path:
+// [4, 4]
+// [5, 6]
+// [7, 5]
+// [5, 4]
